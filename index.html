@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Marketing | Diseño | Pauta Publicitaria. Agencia integral que combina creatividad, estrategia y ejecución para potenciar marcas." />
+  <title>Futura Project Agencia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,700;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Helvetica', sans-serif;
+      background: #fff;
+      color: #111;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+    .nav-logo img {
+      height: 44px;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #111;
+      transition: color .2s, opacity .2s;
+    }
+    .nav-links a:hover { 
+      color: #a8f931;
+      opacity: 1;
+    }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: #111;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 40px;
+      flex-direction: column;
+      gap: 18px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #111;
+    }
+
+    /* ── HERO BANNER (logo strip) ── */
+    .hero-banner {
+      margin-top: 68px;
+      background: #f2f2f2;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+      padding: 28px 0 24px;
+    }
+    .hero-banner img {
+      height: 70px;
+      object-fit: contain;
+    }
+    .hero-banner-text {
+      font-family: 'Helvetica', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #111;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    /* ── HERO SECTION ── */
+    #inicio {
+      position: relative;
+      background: #111;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 65%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #111 18%, rgba(17,17,17,0.5) 35%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 60px 40px 60px;
+      max-width: 600px;
+    }
+    .hero-star {
+      margin-bottom: 18px;
+    }
+    .hero-star svg {
+      width: 54px;
+      height: 54px;
+      fill: #fff;
+    }
+    .hero-content h1 {
+      font-family: 'Helvetica', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero-content p {
+      font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .hero-content p strong {
+      font-weight: 700;
+    }
+    .btn-hero {
+      display: inline-block;
+      background: #fff;
+      color: #111;
+      text-decoration: none;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px 48px;
+      border-radius: 2px;
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .btn-hero:hover {
+      background: #a8f931;
+      color: #111;
+      transform: scale(1.05);
+    }
+
+    /* ── SERVICIOS ── */
+    #servicios {
+      background: #f2f2f2;
+      padding: 72px 40px;
+    }
+    .servicios-title {
+      font-family: 'Helvetica', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: #111;
+      margin-bottom: 12px;
+    }
+    .servicios-title em {
+      font-style: italic;
+    }
+    .servicios-subtitle {
+      font-size: 1.35rem;
+      color: #111;
+      margin-bottom: 48px;
+      max-width: 700px;
+    }
+    .servicios-subtitle strong { font-weight: 700; }
+
+    .steps-table {
+      width: 100%;
+      max-width: 1100px;
+      border-collapse: collapse;
+    }
+    .steps-table tr {
+      border: 1px solid #bbb;
+    }
+    .steps-table td {
+      padding: 32px 36px;
+      vertical-align: top;
+      border: 1px solid #bbb;
+    }
+    .step-num {
+      font-family: 'Helvetica', sans-serif;
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 900;
+      color: #111;
+      line-height: 1;
+      white-space: nowrap;
+      width: 160px;
+    }
+    .step-body h3 {
+      font-family: 'Helvetica', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .step-body p {
+      font-size: 1.3rem;
+      color: #333;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .step-link {
+      font-size: 0.9rem;
+      color: #111;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+      transition: color .2s, transform .2s;
+    }
+    .step-link:hover { 
+      color: #a8f931;
+      transform: scale(1.05);
+    }
+
+    /* ── NOSOTROS ── */
+    #nosotros {
+      position: relative;
+      background: #f5f5f5;
+      padding: 100px 40px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .nosotros-pattern {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      opacity: 0.13;
+      pointer-events: none;
+      user-select: none;
+      overflow: hidden;
+    }
+    .nosotros-pattern span {
+      font-family: 'Helvetica', sans-serif;
+      font-size: 5.5rem;
+      font-weight: 900;
+      color: #111;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .nosotros-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .nosotros-label {
+      font-family: 'Helvetica', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 16px;
+    }
+    .nosotros-title {
+      font-family: 'Helvetica', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: #111;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .nosotros-text {
+      font-size: 1.35rem;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .nosotros-text strong { font-weight: 700; color: #111; }
+    .btn-dark {
+      display: inline-block;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 2px;
+      transition: background .2s, transform .2s;
+    }
+    .btn-dark:hover { 
+      background: #a8f931;
+      color: #111;
+      transform: scale(1.05);
+    }
+
+    /* ── FAQ ── */
+    #faq {
+      position: relative;
+      background: #fff;
+      padding: 80px 40px;
+      overflow: hidden;
+    }
+    .faq-stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* decorative star positions */
+    .faq-star { position: absolute; }
+    .faq-star svg { fill: #111; }
+
+    .faq-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .faq-title {
+      font-family: 'Helvetica', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .faq-desc {
+      font-size: 1.3rem;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 660px;
+    }
+    .faq-item {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: #fff;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #111;
+      line-height: 1.4;
+      transition: background .2s, color .2s;
+    }
+    .faq-question:hover {
+      background: #f9f9f9;
+      color: #a8f931;
+    }
+    .faq-chevron {
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      color: #111;
+      transition: transform .3s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      font-size: 1.28rem;
+      color: #444;
+      line-height: 1.7;
+    }
+    .faq-answer-inner { padding: 0 24px 22px; }
+    .faq-item.open .faq-answer { max-height: 300px; }
+
+    /* ── CONTACTO ── */
+    #contacto {
+      background: linear-gradient(135deg, #d8f56a 0%, #c8ef50 50%, #d4f76a 100%);
+      padding: 80px 40px;
+    }
+    .contacto-inner {
+      max-width: 700px;
+    }
+    #contacto h2 {
+      font-family: 'Helvetica', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 12px;
+    }
+    #contacto p {
+      font-size: 1.35rem;
+      color: #222;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+    .contact-row {
+      display: flex;
+      gap: 0;
+      max-width: 640px;
+    }
+    .contact-row input[type="email"] {
+      flex: 1;
+      padding: 16px 20px;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 1rem;
+      border: none;
+      background: #f0f0f0;
+      color: #111;
+      outline: none;
+      border-radius: 2px 0 0 2px;
+    }
+    .contact-row input::placeholder { color: #888; }
+    .btn-contacto {
+      background: #111;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 0 2px 2px 0;
+      transition: background .2s, transform .2s;
+    }
+    .btn-contacto:hover { 
+      background: #a8f931;
+      color: #111;
+      transform: scale(1.05);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 24px 40px;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+    }
+    footer strong { color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      #inicio { min-height: 480px; }
+      .hero-content { padding: 48px 20px; }
+      .hero-img { width: 100%; opacity: 0.3; }
+      .hero-overlay { background: rgba(17,17,17,0.75); }
+
+      #servicios { padding: 48px 20px; }
+      .steps-table, .steps-table tbody, .steps-table tr, .steps-table td {
+        display: block;
+        width: 100%;
+      }
+      .step-num { font-size: 4rem; margin-bottom: 8px; }
+      .steps-table td { padding: 20px; }
+
+      #nosotros { padding: 72px 20px; }
+      .nosotros-pattern span { font-size: 3.5rem; }
+
+      #faq { padding: 60px 20px; }
+      #contacto { padding: 60px 20px; }
+      .contact-row { flex-direction: column; }
+      .contact-row input[type="email"] { border-radius: 2px; }
+      .btn-contacto { border-radius: 2px; padding: 14px; }
+
+      footer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-logo">
+      <img src="https://storage.mlcdn.com/account_image/1314618/31alhKeZZaSPU6NTN4XTxezGFCWH1dWFZkYgpi9y.png" alt="Futura Project" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio" onclick="closeMobile()">Inicio</a>
+    <a href="#servicios" onclick="closeMobile()">Servicios</a>
+    <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+    <a href="#faq" onclick="closeMobile()">FAQ</a>
+    <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  </div>
+
+  <!-- HERO BANNER (logo grande) -->
+  <div class="hero-banner">
+    <img src="assets/logo-large.png" alt="FuturaProject" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+    <div class="hero-banner-text" style="display:none;">FUTURAPROJECT</div>
+  </div>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <img class="hero-img"
+      src="assets/phone-mockup.jpg"
+      alt="Futura Project hero" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-star">
+        <!-- estrella decorativa igual a la del original -->
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 0 L32 28 L60 30 L32 32 L30 60 L28 32 L0 30 L28 28 Z"/>
+          <path d="M30 10 L31.5 26 L48 30 L31.5 34 L30 50 L28.5 34 L12 30 L28.5 26 Z" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+      </div>
+      <h1>Profesionalizamos tus redes sociales.</h1>
+      <p>Nos especializamos en <strong>desarrollo de marcas, gestión de redes sociales y pauta publicitaria</strong></p>
+      <a href="assets/brochure.pdf" class="btn-hero" target="_blank">Propuesta de marca</a>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <h2 class="servicios-title"><em>3 pasos</em> para optimizar tus <em>redes sociales</em></h2>
+    <p class="servicios-subtitle">Sabemos cómo profesionalizar tus redes sociales en 3 pasos. <strong>¿En qué etapa se encuentra tu empresa?</strong></p>
+
+    <table class="steps-table">
+      <tbody>
+        <tr>
+          <td class="step-num">1.</td>
+          <td class="step-body">
+            <h3>Diseño de identidad de marca</h3>
+            <p>Definimos tus objetivos de comunicación, identificamos a tu público y creamos un diseño de marca memorable, atractivo y funcional.</p>
+            <a href="https://wa.me/5492342530712" class="step-link" target="_blank">Construí tu identidad hoy →</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="step-num">2.</td>
+          <td class="step-body">
+            <h3>Estructuración de tus Redes Sociales</h3>
+            <p>Definimos los pilares de contenido, evaluamos tus recursos de marca y construimos una comunicación auténtica y efectiva que conecta con tu público y responde a las necesidades de tu marca.</p>
+            <a href="https://wa.me/5492342530712" class="step-link" target="_blank">Planificá tu contenido ahora →</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="step-num">3.</td>
+          <td class="step-body">
+            <h3>Potenciá tu alcance con <strong>pauta publicitaria</strong></h3>
+            <p>Creamos y gestionamos campañas estratégicas en redes sociales que amplifican tu visibilidad, conectan con tu público ideal y generan resultados medibles para tu negocio.</p>
+            <a href="https://wa.me/5492342530712" class="step-link" target="_blank">Impulsá tu marca ahora →</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <div class="nosotros-pattern" id="nosotrosPattern"></div>
+    <div class="nosotros-content">
+      <div class="nosotros-label">Sobre Nosotros</div>
+      <h2 class="nosotros-title">Conocé nuestro trabajo</h2>
+      <p class="nosotros-text">
+        <strong>Descubrí nuestro portfolio:</strong> una selección variada de proyectos de diseño y comunicación que reflejan creatividad, estrategia y resultados para distintos clientes y sectores.
+      </p>
+      <a href="https://creativeportoliofp.my.canva.site/futura-project-portfolio" class="btn-dark" target="_blank">Nuestro Trabajo</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <!-- estrellas decorativas -->
+    <div class="faq-stars">
+      <div class="faq-star" style="top:6%;left:3%"><svg width="52" height="52" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="top:2%;left:18%"><svg width="30" height="30" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="top:8%;right:5%"><svg width="58" height="58" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="top:3%;right:22%"><svg width="26" height="26" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="bottom:6%;left:4%"><svg width="60" height="60" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="bottom:2%;left:20%"><svg width="28" height="28" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="bottom:8%;right:4%"><svg width="56" height="56" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="bottom:3%;right:20%"><svg width="24" height="24" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="top:45%;left:1%"><svg width="40" height="40" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+      <div class="faq-star" style="top:45%;right:1%"><svg width="40" height="40" viewBox="0 0 60 60"><path d="M30 0L32 28L60 30L32 32L30 60L28 32L0 30L28 28Z"/></svg></div>
+    </div>
+
+    <div class="faq-inner">
+      <h2 class="faq-title">Preguntas frecuentes</h2>
+      <p class="faq-desc">Aquí respondemos las dudas más comunes sobre nuestros servicios y metodología. Si no encontrás tu respuesta, podés contactarnos directamente y te asesoraremos personalmente.</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Puedo contratar un solo servicio o es obligatorio el paquete completo?
+          <span class="faq-chevron">&#8964;</span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Podés contratar servicios individuales o la solución integral, según lo que necesite tu marca.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué servicios ofrecen?
+          <span class="faq-chevron">&#8964;</span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Brindamos soluciones 360 para potenciar marcas en entornos digitales: conceptualización e identidad visual, diseño de estrategias, gestión de redes sociales y pauta publicitaria.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo comienza el trabajo con Futura Project?
+          <span class="faq-chevron">&#8964;</span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Iniciamos con una reunión de diagnóstico para conocer tu marca, objetivos y público, y a partir de ahí diseñamos un plan a medida.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué diferencia a Futura Project de otras agencias?
+          <span class="faq-chevron">&#8964;</span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Nuestro enfoque integral fusiona creatividad, estrategia y ejecución, asegurando soluciones eficientes que producen resultados concretos.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="contacto-inner">
+      <h2>¡Nos pondremos en contacto!</h2>
+      <p>Te enviaremos más información sobre cómo podemos ayudarte a potenciar tu marca en redes sociales.</p>
+      <div class="contact-row">
+        <input type="email" placeholder="Email" />
+        <button class="btn-contacto" onclick="window.open('https://wa.me/5492342530712','_blank')">Contacto</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>Futura Project Agencia</strong> · Marketing | Diseño | Pauta Publicitaria</p>
+  </footer>
+
+  <script>
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Nosotros pattern: fill with FUTURA PROJECT text
+    (function() {
+      const container = document.getElementById('nosotrosPattern');
+      const words = ['FUTURA', 'PROJECT', 'FUTURA', 'PROJECT'];
+      let html = '';
+      for (let i = 0; i < 120; i++) {
+        html += '<span>' + words[i % words.length] + '&nbsp;</span>';
+      }
+      container.innerHTML = html;
+    })();
+  </script>
+</body>
+</html>
